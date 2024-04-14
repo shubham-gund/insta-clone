@@ -8,8 +8,10 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const passport=require(  'passport' );
 const methodOverride = require('method-override');
+require ('dotenv').config();
+const connectDB = require('./routes/db');
 var app = express();
-
+connectDB();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
