@@ -1,0 +1,33 @@
+<%- include('./partials/header.ejs') %>
+<div class="home-container w-full min-h-screen bg-zinc-950 font-semibold text-white ">
+
+        <div class="navbar">
+                <div class="logo px-10 py-10 text-5xl absolute top-0 left-0"><i class="fa-solid fa-blog"></i></div>
+                <div class=" text-xl flex items-center justify-center gap-40 absolute inset-x-0 top-12 ">
+                <a class="inline" href="/feed"><i class="fa-solid fa-house"></i>&nbsp;&nbsp;Home</a>
+                <a class="inline-block" href="/search"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;&nbsp;Search</a>
+                <a class="inline-block" href="/upload"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Create </a>
+                </div>
+                <a class="username px-10 py-10 text-xl absolute top-1.5 right-0" href="/profile"><%= user.username%> </a>    
+            </div>
+           
+        <div class="post-container " >
+                <%posts.forEach(function(post){%>
+                        <div class="post ">
+                                <img class="mt-3 w-[300px] h-[300px]  " src="/images/uploads/<%=post.picture %>" alt="">
+                                <p class="mt-3 mx-3"><%= post.likes.length %> <a class="mx-3" href="/like/post/<%= post._id %>">
+                                <% if(post.likes.indexOf(user._id) !== -1) {%>
+                                        <i class="fa-solid fa-heart text-red-600"></i>
+                                <% }else { %>
+                                        <i class="fa-regular fa-heart "></i>
+                                        <% } %>        
+                                </a> &nbsp;&nbsp; <span class="float-right"><%= post.user.username%></span></span></p>
+                        </div>
+               <% }) %>
+               
+        </div>
+
+</div>
+    
+
+<%- include('./partials/footer.ejs') %>
