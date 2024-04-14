@@ -1,6 +1,6 @@
 const mongoose=require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URL);
+mongoose.connect("mongodb+srv://shubhamgund91:hhwqRKzTBZxmkCFO@cluster1.a2diun8.mongodb.net/");
 const postSchema = mongoose.Schema({
   picture:String,
   user:{
